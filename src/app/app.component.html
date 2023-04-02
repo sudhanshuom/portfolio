@@ -1,23 +1,34 @@
-<nav id="navbar" class="navbar sticky-top navbar-light bg-light px-3">
-  <a class="navbar-brand" href="#">Sudhanshu Gupta</a>
-  <ul class="nav nav-pills">
-    <li class="nav-item">
-      <a class="nav-link" href="#about">About Me</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#skills">Skills</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#experience">Experience</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#education">Education</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#contact">Contact</a>
-    </li>
-  </ul>
-</nav>
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand ps-5" href="#">Sudhanshu Gupta</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+      aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation"
+      (click)="isCollapsed = !isCollapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse pe-5" id="navbarColor03" [ngbCollapse]="isCollapsed"
+      style="flex-direction: row-reverse;">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="#about">About Me</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="#skills">Skills</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="#experience">Experience</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="#education">Education</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
 
 <div class="px-2" style="max-width: 100%!important; height: auto; overflow: hidden!important;">
   <div>
@@ -27,10 +38,26 @@
           style="max-width: 200px" />
         <h3 class="mx-auto mt-4">SUDHANSHU GUPTA</h3>
         <p class="mx-auto mt-n3 lead">FULL STACK DEVELOPER</p>
+        <div>
+          <a class="h3 mx-2" href="https://www.linkedin.com/in/sudhanshu-gupta-om" target="_blank">
+            <img class="placeholder" src="..\assets\images\linkedin.png" alt="image" class="rounded-circle"
+              style="max-width: 70px" matTooltip="Checkout my LinkedIn"/>
+          </a>
+
+          <a class="h3 mx-2" href="https://github.com/sudhanshuom" target="_blank">
+            <img class="placeholder" src="..\assets\images\github.png" alt="image" class="rounded-circle"
+              style="max-width: 70px" matTooltip="Checkout my Github"/>
+          </a>
+
+          <a class="h3 mx-2" href="https://www.instagram.com/_sudhanshu_gupta_/" target="_blank">
+            <img class="placeholder" src="..\assets\images\instagram.png" alt="image" class="rounded-circle"
+              style="max-width: 70px" matTooltip="Checkout my Instagram"/>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-  <div data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+  <div data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="0" class="scrollspy mt-4" tabindex="0">
     <div id="about" data-aos="fade-left">
       <div class="card m-3 p-3">
         <div class="card-header">
@@ -77,7 +104,7 @@
               <div class="card-body">
                 <h5 class="card-title">Data Structure and Algorithms</h5>
                 <div class="mt-3" style="width: 100%; height: 5px; background: azure;">
-                  <div data-aos="zoom-in-right" data-aos-duration="1500" data-aos-easing="ease-in-sine"
+                  <div data-aos="zoom-in-right" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                     style="width: 90%; height: 5px; background: #0d6efd;"></div>
                 </div>
               </div>
@@ -86,7 +113,7 @@
               <div class="card-body">
                 <h5 class="card-title">JAVA</h5>
                 <div class="mt-3" style="width: 100%; height: 5px; background: azure;">
-                  <div data-aos="zoom-in-right" data-aos-duration="1500" data-aos-easing="ease-in-sine"
+                  <div data-aos="zoom-in-right" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                     style="width: 85%; height: 5px; background: #0d6efd;"></div>
                 </div>
               </div>
@@ -97,7 +124,7 @@
               <div class="card-body">
                 <h5 class="card-title">Spring</h5>
                 <div class="mt-3" style="width: 100%; height: 5px; background: azure;">
-                  <div data-aos="zoom-in-right" data-aos-duration="1500" data-aos-easing="ease-in-sine"
+                  <div data-aos="zoom-in-right" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                     style="width: 85%; height: 5px; background: #0d6efd;"></div>
                 </div>
               </div>
@@ -106,7 +133,7 @@
               <div class="card-body">
                 <h5 class="card-title">Redis</h5>
                 <div class="mt-3" style="width: 100%; height: 5px; background: azure;">
-                  <div data-aos="zoom-in-right" data-aos-duration="1500" data-aos-easing="ease-in-sine"
+                  <div data-aos="zoom-in-right" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                     style="width: 80%; height: 5px; background: #0d6efd;"></div>
                 </div>
               </div>
@@ -117,7 +144,7 @@
               <div class="card-body">
                 <h5 class="card-title">Angular</h5>
                 <div class="mt-3" style="width: 100%; height: 5px; background: azure;">
-                  <div data-aos="zoom-in-right" data-aos-duration="1500" data-aos-easing="ease-in-sine"
+                  <div data-aos="zoom-in-right" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                     style="width: 80%; height: 5px; background: #0d6efd;"></div>
                 </div>
               </div>
@@ -126,7 +153,7 @@
               <div class="card-body">
                 <h5 class="card-title">SQL</h5>
                 <div class="mt-3" style="width: 100%; height: 5px; background: azure;">
-                  <div data-aos="zoom-in-right" data-aos-duration="1500" data-aos-easing="ease-in-sine"
+                  <div data-aos="zoom-in-right" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                     style="width: 75%; height: 5px; background: #0d6efd;"></div>
                 </div>
               </div>
@@ -137,7 +164,7 @@
               <div class="card-body">
                 <h5 class="card-title">AWS</h5>
                 <div class="mt-3" style="width: 100%; height: 5px; background: azure;">
-                  <div data-aos="zoom-in-right" data-aos-duration="1500" data-aos-easing="ease-in-sine"
+                  <div data-aos="zoom-in-right" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                     style="width: 80%; height: 5px; background: #0d6efd;"></div>
                 </div>
               </div>
@@ -146,7 +173,7 @@
               <div class="card-body">
                 <h5 class="card-title">HTML, CSS</h5>
                 <div class="mt-3" style="width: 100%; height: 5px; background: azure;">
-                  <div data-aos="zoom-in-right" data-aos-duration="1500" data-aos-easing="ease-in-sine"
+                  <div data-aos="zoom-in-right" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                     style="width: 85%; height: 5px; background: #0d6efd;"></div>
                 </div>
               </div>
@@ -157,7 +184,7 @@
               <div class="card-body">
                 <h5 class="card-title">Android</h5>
                 <div class="mt-3" style="width: 100%; height: 5px; background: azure;">
-                  <div data-aos="zoom-in-right" data-aos-duration="1500" data-aos-easing="ease-in-sine"
+                  <div data-aos="zoom-in-right" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                     style="width: 70%; height: 5px; background: #0d6efd;"></div>
                 </div>
               </div>
@@ -171,8 +198,9 @@
         <div class="card-header">
           <h4>Work Experience</h4>
         </div>
-        <div class="card-body">
+        <div class="card-body" data-aos="zoom-in">
           <h5 class="card-title">Infosys</h5>
+          <h6 class="lead">Full Stack Developer | Oct 2020 - Present</h6>
           <div class="card-text">
             <ul>
               <li>Developed a brand-new Spring-Boot application handling millions of transactions seamlessly on a daily
@@ -182,13 +210,31 @@
               <li>Collaborated with a team of more than 20 using Agile Methodology.</li>
               <li>Worked with multiple teams across the globes and supported whenever needed. </li>
             </ul>
-
-
+            <b>Technologies Worked on:</b>
+            <div class="row">
+              <div class="col-sm-3">
+                <ul style="list-style-type: square;">
+                  <li>Spring-Boot</li>
+                  <li>Java</li>
+                  <li>Redis</li>
+                  <li>Postman</li>
+                </ul>
+              </div>
+              <div class="col-sm-3">
+                <ul style="list-style-type: square;">
+                  <li>AWS</li>
+                  <li>Netty</li>
+                  <li>Azure</li>
+                  <li>Swagger</li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
         </div>
-        <div class="card-body">
+        <div class="px-5" style="width: 100%; height: 1px; background: #ababab;" data-aos="zoom-in"></div>
+        <div class="card-body" data-aos="zoom-in">
           <h5 class="card-title">IIY Software</h5>
+          <h6 class="lead">Software Developer Intern | Feb 2019 - Aug 2019</h6>
           <div class="card-text">
             <ul>
               <li>Worked on different android applications for managing different school activities intended to
@@ -196,8 +242,25 @@
               <li>Gained experience in Firebase and Oracle Database.</li>
               <li>Gained experience in Google map APIs.</li>
             </ul>
+            <b>Technologies Worked on:</b>
+            <div class="row">
+              <div class="col-sm-3">
+                <ul style="list-style-type: square;">
+                  <li>Android</li>
+                  <li>Java</li>
+                  <li>Firebase</li>
+                  <li>Github</li>
+                </ul>
+              </div>
+              <div class="col-sm-3">
+                <ul style="list-style-type: square;">
+                  <li>Google Maps</li>
+                  <li>Oracle</li>
+                  <li>SQL</li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
         </div>
       </div>
     </div>
@@ -210,7 +273,7 @@
           <div class="row">
             <div class="container text-center mx-1" style="width: 20%; background: #0d6efd;" data-aos="fade-right">
               <div class="row align-items-center">
-                <div class="col">
+                <div class="col" style="color: whitesmoke;">
                   <br>
                   <p class="lead m-0">Bachelor of Technology</p>
                   <p>2016-2020</p>
@@ -229,7 +292,7 @@
           <div class="row">
             <div class="container text-center mx-1" style="width: 20%; background: #0d6efd;" data-aos="fade-right">
               <div class="row align-items-center">
-                <div class="col">
+                <div class="col" style="color: whitesmoke;">
                   <br>
                   <p class="lead m-0">Intermediate</p>
                   <p>2014-2015</p>
@@ -248,7 +311,7 @@
           <div class="row">
             <div class="container text-center mx-1" style="width: 20%; background: #0d6efd;" data-aos="fade-right">
               <div class="row align-items-center">
-                <div class="col">
+                <div class="col" style="color: whitesmoke;">
                   <br>
                   <p class="lead m-0">High School</p>
                   <p>2012-2013</p>
@@ -265,7 +328,7 @@
         </div>
       </div>
     </div>
-    <div id="contact" data-aos="zoom-in">
+    <div class="pb-5 mb-5" id="contact" data-aos="zoom-in">
       <div class="card m-3 p-3">
         <div class="card-header">
           <h4>Contact Me</h4>
@@ -274,7 +337,8 @@
           <h5 class="card-title">Email</h5>
           <tr>
             <td>
-              <p [cdkCopyToClipboard]="'sudhanshuom1996@gmail.com'" style="cursor: pointer;">sudhanshuom1996@gmail.com
+              <p [cdkCopyToClipboard]="'sudhanshuom1996@gmail.com'" style="cursor: pointer;">
+                sudhanshuom1996@gmail.com
               </p>
             </td>
             <td>

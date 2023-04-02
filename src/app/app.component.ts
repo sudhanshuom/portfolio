@@ -8,6 +8,7 @@ import AOS from "aos";
 })
 export class AppComponent {
   title = 'MyPortfolio';
+  public isCollapsed = true;
 
   ngOnInit(): void{
     AOS.init({
