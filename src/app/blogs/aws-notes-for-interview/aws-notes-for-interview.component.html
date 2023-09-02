@@ -1,0 +1,53 @@
+<h5 class="text-center pt-3">AWS Notes for Interview</h5>
+<div class="m-3 p-3" tag>
+  <div class="card-header">
+    <h6>Description</h6>
+  </div>
+  <div>
+    <p align="justify">AWS stands for Amazon Web Services. It is a platform by Amazon that provides on-demand cloud
+      computing platforms and APIs to individuals, companies, and governments, on a metered pay-as-you-go basis. AWS
+      offers over 200 fully featured services for a wide range of technologies, industries, and use cases. These
+      services include computing power, storage, databases, analytics, machine learning, networking, mobile, developer
+      tools, management tools, IoT, security, and enterprise applications.</p>
+
+    <h6>AWS Global Infrastructure</h6>
+    <li><b>AWS Regions:</b> Cluster of Data Centers(us-east-1, eu-west-3,..)</li>
+    <li><b>AWS Availability Zones(AZ):</b> Each region has many AZ(min: 3, max: 6). Each AZ is one or more discrete DC.
+      AZs are seperate and isolated from disasters.</li>
+    <li><b>AWS Data Centers(DC):</b> Network of servers where AWS hosts its services and where users' data is stored and
+      managed</li>
+    <li><b>AWS EdgeLocation / Points of Presence:</b> 400+ POS in 90+ cities across 40+ countries</li>
+    <br>
+    <p><b>NOTE:</b>
+      <li>Most AWS services are region-scoped</li>
+    </p>
+  </div>
+</div>
+
+<div class="card m-3 p-1">
+  <div class="card-header">
+    <h6>Identity and Access Management (IAM)</h6>
+  </div>
+  <div class="card-body">
+    <li>IAM entity that defines a set of permissions for making requests to AWS services and will be used by an AWS
+      service.</li>
+    <li>IAM policies are JSON documents that defines a set of permissions for making requests to AWS sercices, and can
+      be used by IAM Users, User Groups, and IAM Roles.</li>
+    <li>Always grant least privilage.</li>
+    <li>IAM User Groups can contain only IAM users.</li>
+    <li>A statement in an IAM Policy consists of Sid, Effect, Principal, Action, Resource, and Condition. Version is
+      part of the IAM Policy itself, not the statement.</li>
+  </div>
+</div>
+
+<div class="m-3 p-3" tag>
+  <div class="card-header">
+    <h6>EC2</h6>
+  </div>
+  <div>
+    <li><b>EC2 sizing and configuration:</b> OS(Linux, Windows or Mac), CPU, RAM, Storage Space, Network card, Firewall Rules(Security groups), Bootstrap script</li>
+    <li>Bootstrapping means launching commands when machine starts.(Using EC2 User data script)</li>
+    <li>EC2 Types: General purpose, Compute Optimized(C series), Memory(RAM) Optimized(R series), Storage Optimized</li>
+    <li><b>m5.2xlarge</b> m: Instance class, 5 is generation, 2xlarge: size within the instance class </li>
+  </div>
+</div>
