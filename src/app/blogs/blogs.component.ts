@@ -14,7 +14,7 @@ export class BlogsComponent implements OnInit {
   }
 
   navigateToUrl(type:any){
-    this.router.navigate(["notes/"+type])
+    this.router.navigate(["articles/"+type])
   }
 
 }

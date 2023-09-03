@@ -48,6 +48,58 @@
     <li><b>EC2 sizing and configuration:</b> OS(Linux, Windows or Mac), CPU, RAM, Storage Space, Network card, Firewall Rules(Security groups), Bootstrap script</li>
     <li>Bootstrapping means launching commands when machine starts.(Using EC2 User data script)</li>
     <li>EC2 Types: General purpose, Compute Optimized(C series), Memory(RAM) Optimized(R series), Storage Optimized</li>
-    <li><b>m5.2xlarge</b> m: Instance class, 5 is generation, 2xlarge: size within the instance class </li>
+    <li><b>m5.2xlarge</b> <b>m</b>: Instance class, <b>5</b> is generation, <b>2xlarge</b> size within the instance class </li>
+  </div>
+  <div class="card-header mt-3">
+    <h6>Security Groups(SG)</h6>
+  </div>
+  <div>
+    <li>SG are the fundamental of network security in AWS.</li>
+    <li>SG only contain <b>allow</b> rules that can be reference by IP or by SG/li>
+    <li>SG are acting as "Firrewall" on EC2</li>
+    <li>
+      SG regulate: Access to port, Authorised IP ranges(IPv4 and IPv6). Inbound(to EC2) and Outbound(From EC2) Network.
+    </li>
+    <li>Classic ports </li>
+    <ul>22 = SSH(Secure Shell) - Log into a Linux instance.</ul>
+    <ul>21 = FTP - uploads file into file share.</ul>
+    <ul>22 = SFTP - upload files using screen_share.</ul>
+    <ul>80 = HTTP - access unsecured websites</ul>
+    <ul>443 = HTTPs - access secured websites</ul>
+    <ul>3389 = RDP(Remote Desktop Protocol) - log into a Windows instance.</ul>
+    <img class="pt-3" src="..\assets\images\sg_reference.png" alt="image"/>
+  </div>
+</div>
+
+<div class="card m-3 p-1">
+  <div class="card-header mt-3">
+    <h6>Elastic Load Balancer(ELB) & Application Load Balancer(ALB)</h6>
+  </div>
+  <div class="card-body">
+    <li><b>Vertical Scaling:</b> Increase instance size = scale up/down</li>
+    <li><b>Horizontal Scaling:</b> Increase number of instances = scale out/in (ASG and LB)</li>
+    <li><b>High Availability:</b> Running instances for same app across multi AZ (ASG multi AZ and LB multi AZ)</li>
+    <li class="mt-4">ELB are servers that forward traffic to multiple servers downstream.</li>
+    <li>Why ELB?</li>
+    <ul>Expose Single point of access(DNS) to your application</ul>
+    <ul>Seamlessly handle failures of downstream instances</ul>
+    <ul>Provide SSl termination (HTTPS) for your websites</ul>
+    <ul>High availability across zones</ul>
+    <ul>Seperate public traffic from private traffic</ul>
+    <li>ELB is integrated with many AWS services</li>
+    <ul>EC2, EC2 ASG, ECS, ACM, CloudWatch</ul>
+    <ul>Route 53, AWS (Web Application Firewall)WAF, AWS Global Accelerator</ul>
+    <li>"Health checks" is a way for your ELB to verify whether or not an EC2 instance is properly working</li>
+    <li>4 Types of Load Balancers:</li>
+    <ul><b>Classic Load Balancers(v1 - old generation):</b> Compatible with HTTP, HTTPS, TCP, SSL - Deprecated and soon will be removed.</ul>
+    <ul><b>Application Load Balancer(v2 - new generation):</b> Compatible with HTTP, HTTPS, WebSocket</ul>
+    <ul><b>Network Load Balancer(v2 - new generation):</b> Compatible with TCP, TLS, UDP</ul>
+    <ul><b>Gateway Load Balancer:</b> Operates at layer 3(Network Layer) - IP Protocol</ul>
+    <li><b>ALB (v2)</b></li>
+    <ul>Routing to different target Groups- based on "path" / "hostname" / "Query String" / "Headers"</ul>
+    <ul>Great fit for microservices and container-based(Docker & ECS) application</ul>
+    <ul>It has port mapping feature to redirect to dynamic port in ECS.</ul>
+    <li>Will get fixed hostname <b>(XXX.region.elb.amazonaws.com)</b></li>
+    <li>Application don't see IP of client directly. (True client's ip is inserted in header "X-Forwarded-For" or "X-Forwarded-Port") and protocol in "X-Forwarded-Proto"</li>
   </div>
 </div>

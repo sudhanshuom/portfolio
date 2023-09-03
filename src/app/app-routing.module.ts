@@ -21,11 +21,11 @@ const routes: Routes = [
     component: BlogsComponent
   },
   {
-    path: "notes",
+    path: "articles",
     component: BlogsComponent
   },
   {
-    path: "notes/AWS-Notes-for-Interview",
+    path: "articles/AWS-Notes-for-Interview",
     component: AWSNotesForInterviewComponent
   }
 ];
