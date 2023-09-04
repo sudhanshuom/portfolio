@@ -31,7 +31,7 @@
   <div class="card-body">
     <li>IAM entity that defines a set of permissions for making requests to AWS services and will be used by an AWS
       service.</li>
-    <li>IAM policies are JSON documents that defines a set of permissions for making requests to AWS sercices, and can
+    <li>IAM policies are JSON documents that defines a set of permissions for making requests to AWS services, and can
       be used by IAM Users, User Groups, and IAM Roles.</li>
     <li>Always grant least privilage.</li>
     <li>IAM User Groups can contain only IAM users.</li>
@@ -45,10 +45,12 @@
     <h6>EC2</h6>
   </div>
   <div>
-    <li><b>EC2 sizing and configuration:</b> OS(Linux, Windows or Mac), CPU, RAM, Storage Space, Network card, Firewall Rules(Security groups), Bootstrap script</li>
+    <li><b>EC2 sizing and configuration:</b> OS(Linux, Windows or Mac), CPU, RAM, Storage Space, Network card, Firewall
+      Rules(Security groups), Bootstrap script</li>
     <li>Bootstrapping means launching commands when machine starts.(Using EC2 User data script)</li>
     <li>EC2 Types: General purpose, Compute Optimized(C series), Memory(RAM) Optimized(R series), Storage Optimized</li>
-    <li><b>m5.2xlarge</b> <b>m</b>: Instance class, <b>5</b> is generation, <b>2xlarge</b> size within the instance class </li>
+    <li><b>m5.2xlarge</b> <b>m</b>: Instance class, <b>5</b> is generation, <b>2xlarge</b> size within the instance
+      class </li>
   </div>
   <div class="card-header mt-3">
     <h6>Security Groups(SG)</h6>
@@ -67,20 +69,20 @@
     <ul>80 = HTTP - access unsecured websites</ul>
     <ul>443 = HTTPs - access secured websites</ul>
     <ul>3389 = RDP(Remote Desktop Protocol) - log into a Windows instance.</ul>
-    <img class="pt-3" src="..\assets\images\sg_reference.png" alt="image"/>
+    <img class="pt-3" src="..\assets\images\sg_reference.png" alt="image" />
   </div>
 </div>
 
 <div class="card m-3 p-1">
   <div class="card-header mt-3">
-    <h6>Elastic Load Balancer(ELB) & Application Load Balancer(ALB)</h6>
+    <h6>Elastic Load Balancer(ELB) and Auto Scaling Group(ASG)</h6>
   </div>
   <div class="card-body">
     <li><b>Vertical Scaling:</b> Increase instance size = scale up/down</li>
     <li><b>Horizontal Scaling:</b> Increase number of instances = scale out/in (ASG and LB)</li>
     <li><b>High Availability:</b> Running instances for same app across multi AZ (ASG multi AZ and LB multi AZ)</li>
     <li class="mt-4">ELB are servers that forward traffic to multiple servers downstream.</li>
-    <li>Why ELB?</li>
+    <li><u>Why ELB?</u></li>
     <ul>Expose Single point of access(DNS) to your application</ul>
     <ul>Seamlessly handle failures of downstream instances</ul>
     <ul>Provide SSl termination (HTTPS) for your websites</ul>
@@ -91,15 +93,126 @@
     <ul>Route 53, AWS (Web Application Firewall)WAF, AWS Global Accelerator</ul>
     <li>"Health checks" is a way for your ELB to verify whether or not an EC2 instance is properly working</li>
     <li>4 Types of Load Balancers:</li>
-    <ul><b>Classic Load Balancers(v1 - old generation):</b> Compatible with HTTP, HTTPS, TCP, SSL - Deprecated and soon will be removed.</ul>
+    <ul><b>Classic Load Balancers(v1 - old generation):</b> Compatible with HTTP, HTTPS, TCP, SSL - Deprecated and soon
+      will be removed.</ul>
     <ul><b>Application Load Balancer(v2 - new generation):</b> Compatible with HTTP, HTTPS, WebSocket</ul>
     <ul><b>Network Load Balancer(v2 - new generation):</b> Compatible with TCP, TLS, UDP</ul>
-    <ul><b>Gateway Load Balancer:</b> Operates at layer 3(Network Layer) - IP Protocol</ul>
-    <li><b>ALB (v2)</b></li>
+    <ul><b>Gateway Load Balancer(GWLB):</b> Operates at layer 3(Network Layer) - IP Protocol</ul>
+    <li><b>ALB (v2) (Layer - 7)</b></li>
     <ul>Routing to different target Groups- based on "path" / "hostname" / "Query String" / "Headers"</ul>
     <ul>Great fit for microservices and container-based(Docker & ECS) application</ul>
     <ul>It has port mapping feature to redirect to dynamic port in ECS.</ul>
     <li>Will get fixed hostname <b>(XXX.region.elb.amazonaws.com)</b></li>
-    <li>Application don't see IP of client directly. (True client's ip is inserted in header "X-Forwarded-For" or "X-Forwarded-Port") and protocol in "X-Forwarded-Proto"</li>
+    <li>Application don't see IP of client directly. (Real client's ip is inserted in header "X-Forwarded-For" port in
+      "X-Forwarded-Port" and protocol in "X-Forwarded-Proto")</li>
+    <li><b>NLB (v2) (Layer - 4)</b></li>
+    <ul>Handle millions of request per sec and has less latency ~ 100ms (vs 400 ms for ALB)</ul>
+    <ul>NLB has one static IP per AZ and supports assigning Elastic IP(helpful for whitelisting specific IP)</ul>
+    <ul>Used for Extreme performance</ul>
+
+
+    <div class="container mx-2">
+      <div class="row">
+        <div class="col-sm px-2 mt-3">
+          <p><b>NOTE:</b>
+            <li>Health Checks support the <b>TCP, HTTP and HTTPS Protocols</b>.</li>
+          </p>
+          <li><b>GWLB (Layer - 3) for IP packets</b></li>
+          <ul>Deploy, scale and manage a fleet of 3rd party netwoek virtual appliances in AWS.</ul>
+          <ul>Used for Firewalls, Intrusion Detectioin and Prevention Systems, Deep packet Inspection, payload
+            manipulation.</ul>
+          <ul>Transparent Network Gateway - Single entry / exit</ul>
+          <ul>Load Balancer- disttributs traffic to your virtual appliances</ul>
+        </div>
+        <div class="col-sm">
+          <img class="pt-3" src="..\assets\images\gwlb.png" alt="image" style="max-height: 400px;" />
+        </div>
+      </div>
+    </div>
+
+    <li><b>Sticky Sessions (Session Affinity):</b></li>
+    <ul>Cookie used for stickiness has an expiration date you control.</ul>
+    <ul>Enabling stickiness may bring imbalance to the load over backend EC2 instances.</ul>
+    <ul>Types of Cookies: Application-based cookies("Custom Cookie" - by application and "Application Cookie" - By LB)
+      and Duration-based Cookie(Generated by LB)</ul>
+
+    <li><b>Cross-Zone Load Balancing</b></li>
+    <img class="pt-3" src="..\assets\images\cross_zone_lb.png" alt="image" style="max-height: 400px;" />
+
+    <li><b>Secure Socket Layer (SSL) / Transport Layer Security (TLS)</b></li>
+    <ul>It allows b/w your clients and your LB to be encrypted intransist (in-flight encryption)</ul>
+    <ul>Public SSL certificates are issued by Certificate Authority(CA) and have expiration date(you set) and must be
+      renewed.</ul>
+    <img class="pt-3" src="..\assets\images\lb-ssl.png" alt="image" style="max-height: 150px;" />
+    <ul>LB uses an X.509 certificate (SSL/TLS server certificate)</ul>
+    <ul>We can also use ACM to manage these certificates</ul>
+
+    <li><b>Connection Draining / Deregestration Delay:</b></li>
+    <ul>It give time to complete "in-flight (active) requests" while instance is de-regestering or unhealthy.</ul>
+    <ul>Stops sending new requests to unhealthy instances.</ul>
+    <ul>We can configure time duration of in-flight requests to unhealthy instance between 0-3600 seconds(default: 300)
+    </ul>
+
+    <li><b><u>Auto Scaling Group(ASG)</u></b></li>
+    <ul>Scale out / in (add or remove instance) to match load</ul>
+    <ul>Ensure that min and max number of instance</ul>
+    <ul>ASG are free (pay only for underlying EC2)</ul>
+    <ul>It is possible to scale an ASG based on CloudWatch Alarms by creating scale-out and scale-in policies.</ul>
+    <li>Dynamic Scaling Policies</li>
+    <ul>Target Tracking Scaling: Avg CPU to stay at 40 %</ul>
+    <ul>Simple / Step Scaling: Based on CloudWatch Alarms</ul>
+    <ul>Scheduled Action: Based on known usage patterns(increase min capacity to 10 at 5 pm)</ul>
+    <ul>Predictive Scaling: Histoorical load is going to be analyzed and based on that it's going to scale up/down (ML
+      powered)</ul>
   </div>
+</div>
+
+<div class="m-3 p-3" tag>
+  <div class="card-header">
+    <h6>Amazon S3 - "Infinitely Scaling" Storage</h6>
+  </div>
+  <div>
+    <li>For Backup and Storage, Disaster Recovery, Archive, Hybrid Cloud Storage, Applicationi hosting, Media hosting,
+      Data lakes and Big analytics, Software delivery, Static Website</li>
+    <li> It stores objects (files) in "buckets" (directories)</li>
+    <li>Buckets must have globally unique name (across all regions all accounts)</li>
+    <li>Buckets are defined at region level</li>
+    <li>Max object size isi 5TB and if uploading more than 5GB, must use "multi-part upload"</li>
+    <li><b>S3 - Security</b></li>
+    <li>"User-Based" = IAM Policies - which API calls should be alloowed for specific user from IAM</li>
+    <li>"Resource-Based"</li>
+    <ul><b>Bucket Policies: </b></ul>
+    <ul><b>Object Access Control List (ACL): </b></ul>
+    <ul><b>Bucket Access Control List: </b></ul>
+    <li>"Encryption:" encrypt objects in S3 using encryption keys</li>
+
+    <div><b>NOTE:</b>
+      <li>An IAM principal can access S3 object if-</li>
+      <ul>User IAM permission ALLOW it <u>OR</u> the resource policy ALLOWS it </ul>
+      <ul><u>AND</u> there's no explicit DENY</ul>
+    </div>
+
+    <li><b>S3 - Versioning</b></li>
+    <ul>You can version your file. Same key overwrite will change the version: 1, 2, 3...</ul>
+    <ul>Any file which is not versioined prior to enabling will have version "null"</ul>
+    <ul>Suspending version does not delete the previous version.</ul>
+
+    <li><b>S3 - Replication - (Asynchronous)</b></li>
+    <ul>Must enable versioning</ul>
+    <ul>Cross-Region Replication (CRR)</ul>
+    <ul>Same-Region Replication (SRR)</ul>
+    <ul>Must give proper IAM permission to S3</ul>
+    <ul>After enable replication, only new objects are replicated</ul>
+    <ul>To replicate existing  objects use S3 Batch Replication</ul>
+    <ul>For DELETE: can replicate delete markers(optional setting). (Deletion with version Id are not replicated - Avoid Malicious deletes)</ul>
+    <li><b><u>S3 Storage Classes</u></b></li>
+    <li>"Amazon S3 Standard - General Purpose" = 99.99% availability, Low latency and high throughput</li>
+    <li>"Amazon S3 Standard - Infrequent Access (IA)" = 99.9% availability</li>
+    <li>"Amazon S3 One Zone - IA" = 99.5% availability</li>
+    <li>"Amazon S3 Glacier Instant Retrieval" = millisecond retrieval, min storage duration: 90 days</li>
+    <li>"Amazon S3 Glacier Flexible Retrieval" = Expedited(1-5 mins), Standard(3-5 hours), Bulk(5-12 hours), min storage duration: 90 days</li>
+    <li>"Amazon S3 Glacier Deep Archive" = Standard(12 hours), Bulk(48 hours), min storage duration: 180 days</li>
+    <li>"Amazon S3 Intelligent Tiering"</li>
+  </div>
+  <br>
 </div>
