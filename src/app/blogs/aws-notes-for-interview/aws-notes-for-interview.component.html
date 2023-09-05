@@ -1,7 +1,7 @@
 <h5 class="text-center pt-3">AWS Notes for Interview</h5>
 <div class="m-3 p-3" tag>
   <div class="card-header">
-    <h6>Description</h6>
+    <h5>Description</h5>
   </div>
   <div>
     <p align="justify">AWS stands for Amazon Web Services. It is a platform by Amazon that provides on-demand cloud
@@ -10,7 +10,7 @@
       services include computing power, storage, databases, analytics, machine learning, networking, mobile, developer
       tools, management tools, IoT, security, and enterprise applications.</p>
 
-    <h6>AWS Global Infrastructure</h6>
+    <h5>AWS Global Infrastructure</h5>
     <li><b>AWS Regions:</b> Cluster of Data Centers(us-east-1, eu-west-3,..)</li>
     <li><b>AWS Availability Zones(AZ):</b> Each region has many AZ(min: 3, max: 6). Each AZ is one or more discrete DC.
       AZs are seperate and isolated from disasters.</li>
@@ -26,7 +26,7 @@
 
 <div class="card m-3 p-1">
   <div class="card-header">
-    <h6>Identity and Access Management (IAM)</h6>
+    <h5>Identity and Access Management (IAM)</h5>
   </div>
   <div class="card-body">
     <li>IAM entity that defines a set of permissions for making requests to AWS services and will be used by an AWS
@@ -42,7 +42,7 @@
 
 <div class="m-3 p-3" tag>
   <div class="card-header">
-    <h6>EC2</h6>
+    <h5>EC2</h5>
   </div>
   <div>
     <li><b>EC2 sizing and configuration:</b> OS(Linux, Windows or Mac), CPU, RAM, Storage Space, Network card, Firewall
@@ -53,7 +53,7 @@
       class </li>
   </div>
   <div class="card-header mt-3">
-    <h6>Security Groups(SG)</h6>
+    <h5>Security Groups(SG)</h5>
   </div>
   <div>
     <li>SG are the fundamental of network security in AWS.</li>
@@ -75,7 +75,7 @@
 
 <div class="card m-3 p-1">
   <div class="card-header mt-3">
-    <h6>Elastic Load Balancer(ELB) and Auto Scaling Group(ASG)</h6>
+    <h5>Elastic Load Balancer(ELB) and Auto Scaling Group(ASG)</h5>
   </div>
   <div class="card-body">
     <li><b>Vertical Scaling:</b> Increase instance size = scale up/down</li>
@@ -118,11 +118,11 @@
             <li>Health Checks support the <b>TCP, HTTP and HTTPS Protocols</b>.</li>
           </p>
           <li><b>GWLB (Layer - 3) for IP packets</b></li>
-          <ul>Deploy, scale and manage a fleet of 3rd party netwoek virtual appliances in AWS.</ul>
+          <ul>Deploy, scale and manage a fleet of 3rd party network virtual appliances in AWS.</ul>
           <ul>Used for Firewalls, Intrusion Detectioin and Prevention Systems, Deep packet Inspection, payload
             manipulation.</ul>
           <ul>Transparent Network Gateway - Single entry / exit</ul>
-          <ul>Load Balancer- disttributs traffic to your virtual appliances</ul>
+          <ul>Load Balancer- disttributes traffic to your virtual appliances</ul>
         </div>
         <div class="col-sm">
           <img class="pt-3" src="..\assets\images\gwlb.png" alt="image" style="max-height: 400px;" />
@@ -158,18 +158,19 @@
     <ul>Ensure that min and max number of instance</ul>
     <ul>ASG are free (pay only for underlying EC2)</ul>
     <ul>It is possible to scale an ASG based on CloudWatch Alarms by creating scale-out and scale-in policies.</ul>
-    <li>Dynamic Scaling Policies</li>
-    <ul>Target Tracking Scaling: Avg CPU to stay at 40 %</ul>
-    <ul>Simple / Step Scaling: Based on CloudWatch Alarms</ul>
-    <ul>Scheduled Action: Based on known usage patterns(increase min capacity to 10 at 5 pm)</ul>
-    <ul>Predictive Scaling: Histoorical load is going to be analyzed and based on that it's going to scale up/down (ML
+    <li><b>Dynamic Scaling Policies</b></li>
+    <ul><u>Target Tracking Scaling:</u> Avg CPU to stay at 40 %</ul>
+    <ul><u>Simple / Step Scaling:</u> Based on CloudWatch Alarms</ul>
+    <ul><u>Scheduled Action:</u> Based on known usage patterns(increase min capacity to 10 at 5 pm)</ul>
+    <ul><u>Predictive Scaling:</u> Histoorical load is going to be analyzed and based on that it's going to scale
+      up/down (ML
       powered)</ul>
   </div>
 </div>
 
 <div class="m-3 p-3" tag>
   <div class="card-header">
-    <h6>Amazon S3 - "Infinitely Scaling" Storage</h6>
+    <h5>Amazon S3 - "Infinitely Scaling" Storage</h5>
   </div>
   <div>
     <li>For Backup and Storage, Disaster Recovery, Archive, Hybrid Cloud Storage, Applicationi hosting, Media hosting,
@@ -177,7 +178,7 @@
     <li> It stores objects (files) in "buckets" (directories)</li>
     <li>Buckets must have globally unique name (across all regions all accounts)</li>
     <li>Buckets are defined at region level</li>
-    <li>Max object size isi 5TB and if uploading more than 5GB, must use "multi-part upload"</li>
+    <li>Max object size is 5TB and if uploading more than 5GB, must use "multi-part upload"</li>
     <li><b>S3 - Security</b></li>
     <li>"User-Based" = IAM Policies - which API calls should be alloowed for specific user from IAM</li>
     <li>"Resource-Based"</li>
@@ -203,16 +204,48 @@
     <ul>Same-Region Replication (SRR)</ul>
     <ul>Must give proper IAM permission to S3</ul>
     <ul>After enable replication, only new objects are replicated</ul>
-    <ul>To replicate existing  objects use S3 Batch Replication</ul>
-    <ul>For DELETE: can replicate delete markers(optional setting). (Deletion with version Id are not replicated - Avoid Malicious deletes)</ul>
+    <ul>To replicate existing objects use S3 Batch Replication</ul>
+    <ul>For DELETE: can replicate delete markers(optional setting). (Deletion with version Id are not replicated - Avoid
+      Malicious deletes)</ul>
     <li><b><u>S3 Storage Classes</u></b></li>
     <li>"Amazon S3 Standard - General Purpose" = 99.99% availability, Low latency and high throughput</li>
     <li>"Amazon S3 Standard - Infrequent Access (IA)" = 99.9% availability</li>
     <li>"Amazon S3 One Zone - IA" = 99.5% availability</li>
     <li>"Amazon S3 Glacier Instant Retrieval" = millisecond retrieval, min storage duration: 90 days</li>
-    <li>"Amazon S3 Glacier Flexible Retrieval" = Expedited(1-5 mins), Standard(3-5 hours), Bulk(5-12 hours), min storage duration: 90 days</li>
+    <li>"Amazon S3 Glacier Flexible Retrieval" = Expedited(1-5 mins), Standard(3-5 hours), Bulk(5-12 hours), min storage
+      duration: 90 days</li>
     <li>"Amazon S3 Glacier Deep Archive" = Standard(12 hours), Bulk(48 hours), min storage duration: 180 days</li>
     <li>"Amazon S3 Intelligent Tiering"</li>
   </div>
   <br>
+</div>
+
+<div class="card m-3 p-1">
+  <div class="card-header mt-3">
+    <h5>Route 53</h5>
+  </div>
+  <div class="card-body">
+    <li>Domain Name System(DNS) - translates human friendly hostnames into machine IP.</li>
+    <li><u>Route 53</u> is a highly available, scalable, fully managed by Authoritative DNS</li>
+    <li><u>Route 53</u> is also a Domain Registrar</li>
+    <li>It supports following DNS: <b>A / AAAA / CNAME / NS</b></li>
+    <li><b>A </b> maps hostname to IPv4</li>
+    <li><b>AAAA </b> maps hostname to IPv6</li>
+    <li><b>CNAME </b> maps hostname to another hostname (target Domain must have an A or AAAA record)</li>
+    <li><b>NS </b> Name Servers for the Hosted Zone - Control how traffic is routed for a domain</li>
+    <li><u>Hosted Zones</u></li>
+    <ul>Container for records that define how to route trraffic to a domain and its subdomains</ul>
+    <ul><b>2 Types: </b><u>Public Hosted Zones</u> and <u>Private Hosted Zones</u></ul>
+    <li><b>you pay $0.50 / month per hosted zone</b></li>
+    <li><b>Routing Policies:</b></li>
+    <ul>It's not same as LB routing, it only responds to DNS queries</ul>
+    <ul>Route 53 supports following routing policies:</ul>
+    <ul><u>Simple: </u> Route to single resource.(If multiple value returned, a random one is chosen by client)</ul>
+    <ul><u>Weighted: </u>Control % of requests that go to each resource</ul>
+    <ul><u>Failover: </u>Request will be routed to primary instance if healthy else secondary instance</ul>
+    <ul><u>Latency based: </u> Redirect to resource that has least latency close to us</ul>
+    <ul><u>Geolocation: </u>Based on use location. (Should create a default match if no match in location)</ul>
+    <ul><u>Multi-Value Answer: </u>Upto 8 healthy records are returned.</ul>
+    <ul><u>Geoproximity:</u> Ability to shift more traffic to resources based on defined bias(1-99)</ul>
+  </div>
 </div>
