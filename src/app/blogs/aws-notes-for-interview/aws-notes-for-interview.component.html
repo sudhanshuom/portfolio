@@ -1,0 +1,415 @@
+<h5 class="text-center pt-3">AWS Notes for Interview</h5>
+<div id="AWS-Notes" class="m-3 p-3" tag>
+  <div class="card-header">
+    <h5>Description</h5>
+  </div>
+  <div>
+    <p align="justify">AWS stands for Amazon Web Services. It is a platform by Amazon that provides on-demand cloud
+      computing platforms and APIs to individuals, companies, and governments, on a metered pay-as-you-go basis. AWS
+      offers over 200 fully featured services for a wide range of technologies, industries, and use cases. These
+      services include computing power, storage, databases, analytics, machine learning, networking, mobile, developer
+      tools, management tools, IoT, security, and enterprise applications.</p>
+
+    <h5>AWS Global Infrastructure</h5>
+    <ul>
+      <li><b>AWS Regions:</b> Cluster of Data Centers(us-east-1, eu-west-3,..)</li>
+      <li><b>AWS Availability Zones(AZ):</b> Each region has many AZ(min: 3, max: 6). Each AZ is one or more discrete
+        DC.
+        AZs are seperate and isolated from disasters.</li>
+      <li><b>AWS Data Centers(DC):</b> Network of servers where AWS hosts its services and where users' data is stored
+        and
+        managed</li>
+      <li><b>AWS EdgeLocation / Points of Presence:</b> 400+ POS in 90+ cities across 40+ countries</li>
+    </ul>
+    <br>
+    <div><b>NOTE:</b>
+      <ul>
+        <li>Most AWS services are region-scoped</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="m-3 p-3" tag>
+  <div class="card-header">
+    <h5>Table of Content</h5>
+  </div>
+  <div>
+    <li><a href="/articles/AWS-Notes-for-Interview#IAM">Identity and Access Management (IAM)</a></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#EC2-and-Secuurity-Group">EC2 and Security Groups(SG)</a></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#ELB-and-ASG">Elastic Load Balancer(ELB) and Auto Scaling
+        Group(ASG)</a></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#Amazon-S3">Amazon S3 - "Infinitely Scaling" Storage</a></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#Route53">Route 53</a></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#VPC-Fundamentals">VPC Fundamentals</a></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#AWS-CloudFront">AWS CloudFront</a></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#Amazon-SQS">Amazon SQS</a></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#Amazon-SNS">Amazon SNS</a></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#AWS-Lambda">AWS Lambda</a></li>
+  </div>
+</div>
+
+<div id="IAM" class="card m-3 p-1">
+  <div class="card-header">
+    <h5>Identity and Access Management (IAM)</h5>
+  </div>
+  <div class="card-body">
+    <li>IAM entity that defines a set of permissions for making requests to AWS services and will be used by an AWS
+      service.</li>
+    <li>IAM policies are JSON documents that defines a set of permissions for making requests to AWS services, and can
+      be used by IAM Users, User Groups, and IAM Roles.</li>
+    <li>Always grant least privilage.</li>
+    <li>IAM User Groups can contain only IAM users.</li>
+    <li>A statement in an IAM Policy consists of Sid, Effect, Principal, Action, Resource, and Condition. Version is
+      part of the IAM Policy itself, not the statement.</li>
+  </div>
+</div>
+
+<div id="EC2-and-Secuurity-Group" class="m-3 p-3" tag>
+  <div class="card-header">
+    <h5>EC2</h5>
+  </div>
+  <div>
+    <li><b>EC2 sizing and configuration:</b> OS(Linux, Windows or Mac), CPU, RAM, Storage Space, Network card,
+      Firewall
+      Rules(Security groups), Bootstrap script</li>
+    <li>Bootstrapping means launching commands when machine starts.(Using EC2 User data script)</li>
+    <li>EC2 Types: General purpose, Compute Optimized(C series), Memory(RAM) Optimized(R series), Storage Optimized
+    </li>
+    <li><b>m5.2xlarge</b> <b>m</b>: Instance class, <b>5</b> is generation, <b>2xlarge</b> size within the instance
+      class </li>
+  </div>
+  <div class="card-header mt-3">
+    <h5>Security Groups(SG)</h5>
+  </div>
+  <div>
+    <li>SG are the fundamental of network security in AWS.</li>
+    <li>SG only contain <b>allow</b> rules that can be reference by IP or by SG</li>
+    <li>SG are acting as "Firrewall" on EC2</li>
+    <li>
+      SG regulate: Access to port, Authorised IP ranges(IPv4 and IPv6). Inbound(to EC2) and Outbound(From EC2)
+      Network.
+    </li>
+    <li>Classic ports </li>
+    <ul>22 = SSH(Secure Shell) - Log into a Linux instance.</ul>
+    <ul>21 = FTP - uploads file into file share.</ul>
+    <ul>22 = SFTP - upload files using screen share.</ul>
+    <ul>80 = HTTP - access unsecured websites</ul>
+    <ul>443 = HTTPs - access secured websites</ul>
+    <ul>3389 = RDP(Remote Desktop Protocol) - log into a Windows instance.</ul>
+    <img class="pt-3" src="..\assets\images\sg_reference.png" alt="image" style="max-width: 900px;" />
+  </div>
+</div>
+
+<div id="ELB-and-ASG" class="card m-3 p-1">
+  <div class="card-header">
+    <h5>Elastic Load Balancer(ELB) and Auto Scaling Group(ASG)</h5>
+  </div>
+  <div class="card-body">
+    <li><b>Vertical Scaling:</b> Increase instance size = scale up/down</li>
+    <li><b>Horizontal Scaling:</b> Increase number of instances = scale out/in (ASG and LB)</li>
+    <li><b>High Availability:</b> Running instances for same app across multi AZ (ASG multi AZ and LB multi AZ)</li>
+    <li class="mt-4">ELB are servers that forward traffic to multiple servers downstream.</li>
+    <li><u>Why ELB?</u></li>
+    <ul>Expose Single point of access(DNS) to your application</ul>
+    <ul>Seamlessly handle failures of downstream instances</ul>
+    <ul>Provide SSl termination (HTTPS) for your websites</ul>
+    <ul>High availability across zones</ul>
+    <ul>Seperate public traffic from private traffic</ul>
+    <li>ELB is integrated with many AWS services</li>
+    <ul>EC2, EC2 ASG, ECS, ACM, CloudWatch</ul>
+    <ul>Route 53, AWS (Web Application Firewall)WAF, AWS Global Accelerator</ul>
+    <li>"Health checks" is a way for your ELB to verify whether or not an EC2 instance is properly working</li>
+    <li>4 Types of Load Balancers:</li>
+    <ul><b>Classic Load Balancers(v1 - old generation):</b> Compatible with HTTP, HTTPS, TCP, SSL - Deprecated and
+      soon
+      will be removed.</ul>
+    <ul><b>Application Load Balancer(v2 - new generation):</b> Compatible with HTTP, HTTPS, WebSocket</ul>
+    <ul><b>Network Load Balancer(v2 - new generation):</b> Compatible with TCP, TLS, UDP</ul>
+    <ul><b>Gateway Load Balancer(GWLB):</b> Operates at layer 3(Network Layer) - IP Protocol</ul>
+    <li><b>ALB (v2) (Layer - 7)</b></li>
+    <ul>Routing to different target Groups- based on "path" / "hostname" / "Query String" / "Headers"</ul>
+    <ul>Great fit for microservices and container-based(Docker & ECS) application</ul>
+    <ul>It has port mapping feature to redirect to dynamic port in ECS.</ul>
+    <li>Will get fixed hostname <b>(XXX.region.elb.amazonaws.com)</b></li>
+    <li>Application don't see IP of client directly. (Real client's ip is inserted in header "X-Forwarded-For" port in
+      "X-Forwarded-Port" and protocol in "X-Forwarded-Proto")</li>
+    <li><b>NLB (v2) (Layer - 4)</b></li>
+    <ul>Handle millions of request per sec and has less latency ~ 100ms (vs 400 ms for ALB)</ul>
+    <ul>NLB has one static IP per AZ and supports assigning Elastic IP(helpful for whitelisting specific IP)</ul>
+    <ul>Used for Extreme performance</ul>
+
+
+    <div class="container mx-2">
+      <div class="row">
+        <div class="col-sm px-2 mt-3">
+          <p><b>NOTE:</b>
+            <li>Health Checks support the <b>TCP, HTTP and HTTPS Protocols</b>.</li>
+          </p>
+          <li><b>GWLB (Layer - 3) for IP packets</b></li>
+          <ul>Deploy, scale and manage a fleet of 3rd party network virtual appliances in AWS.</ul>
+          <ul>Used for Firewalls, Intrusion Detectioin and Prevention Systems, Deep packet Inspection, payload
+            manipulation.</ul>
+          <ul>Transparent Network Gateway - Single entry / exit</ul>
+          <ul>Load Balancer- disttributes traffic to your virtual appliances</ul>
+        </div>
+        <div class="col-sm">
+          <img class="pt-3" src="..\assets\images\gwlb.png" alt="image" style="max-height: 400px; max-width: 900px;" />
+        </div>
+      </div>
+    </div>
+
+    <li><b>Sticky Sessions (Session Affinity):</b></li>
+    <ul>Cookie used for stickiness has an expiration date you control.</ul>
+    <ul>Enabling stickiness may bring imbalance to the load over backend EC2 instances.</ul>
+    <ul>Types of Cookies: Application-based cookies("Custom Cookie" - by application and "Application Cookie" - By LB)
+      and Duration-based Cookie(Generated by LB)</ul>
+
+    <li><b>Cross-Zone Load Balancing</b></li>
+    <img class="pt-3" src="..\assets\images\cross_zone_lb.png" alt="image"
+      style="max-height: 400px; max-width: 900px;" />
+
+    <li><b>Secure Socket Layer (SSL) / Transport Layer Security (TLS)</b></li>
+    <ul>It allows b/w your clients and your LB to be encrypted intransist (in-flight encryption)</ul>
+    <ul>Public SSL certificates are issued by Certificate Authority(CA) and have expiration date(you set) and must be
+      renewed.</ul>
+    <ul>LB uses an X.509 certificate (SSL/TLS server certificate)</ul>
+    <ul>We can also use ACM to manage these certificates</ul>
+    <img class="pt-3" src="..\assets\images\lb-ssl.png" alt="image" style="max-height: 150px; max-width: 900px;" />
+
+    <li><b>Connection Draining / Deregestration Delay:</b></li>
+    <ul>It give time to complete "in-flight (active) requests" while instance is de-regestering or unhealthy.</ul>
+    <ul>Stops sending new requests to unhealthy instances.</ul>
+    <ul>We can configure time duration of in-flight requests to unhealthy instance between 0-3600 seconds(default:
+      300)
+    </ul>
+
+    <li><b><u>Auto Scaling Group(ASG)</u></b></li>
+    <ul>Scale out / in (add or remove instance) to match load</ul>
+    <ul>Ensure that min and max number of instance</ul>
+    <ul>ASG are free (pay only for underlying EC2)</ul>
+    <ul>It is possible to scale an ASG based on CloudWatch Alarms by creating scale-out and scale-in policies.</ul>
+    <li><b>Dynamic Scaling Policies</b></li>
+    <ul><u>Target Tracking Scaling:</u> Avg CPU to stay at 40 %</ul>
+    <ul><u>Simple / Step Scaling:</u> Based on CloudWatch Alarms</ul>
+    <ul><u>Scheduled Action:</u> Based on known usage patterns(increase min capacity to 10 at 5 pm)</ul>
+    <ul><u>Predictive Scaling:</u> Histoorical load is going to be analyzed and based on that it's going to scale
+      up/down (ML
+      powered)</ul>
+  </div>
+</div>
+
+<div id="Amazon-S3" class="m-3 p-3" tag>
+  <div class="card-header">
+    <h5>Amazon S3 - "Infinitely Scaling" Storage</h5>
+  </div>
+  <div>
+    <li>For Backup and Storage, Disaster Recovery, Archive, Hybrid Cloud Storage, Applicationi hosting, Media hosting,
+      Data lakes and Big analytics, Software delivery, Static Website</li>
+    <li> It stores objects (files) in "buckets" (directories)</li>
+    <li>Buckets must have globally unique name (across all regions all accounts)</li>
+    <li>Buckets are defined at region level</li>
+    <li>Max object size is 5TB and if uploading more than 5GB, must use "multi-part upload"</li>
+    <li><b>S3 - Security</b></li>
+    <li>"User-Based" = IAM Policies - which API calls should be alloowed for specific user from IAM</li>
+    <li>"Resource-Based"</li>
+    <ul><b>Bucket Policies: </b></ul>
+    <ul><b>Object Access Control List (ACL): </b></ul>
+    <ul><b>Bucket Access Control List: </b></ul>
+    <li>"Encryption:" encrypt objects in S3 using encryption keys</li>
+
+    <div><b>NOTE:</b>
+      <li>An IAM principal can access S3 object if-</li>
+      <ul>User IAM permission ALLOW it <u>OR</u> the resource policy ALLOWS it </ul>
+      <ul><u>AND</u> there's no explicit DENY</ul>
+    </div>
+
+    <li><b>S3 - Versioning</b></li>
+    <ul>You can version your file. Same key overwrite will change the version: 1, 2, 3...</ul>
+    <ul>Any file which is not versioined prior to enabling will have version "null"</ul>
+    <ul>Suspending version does not delete the previous version.</ul>
+
+    <li><b>S3 - Replication - (Asynchronous)</b></li>
+    <ul>Must enable versioning</ul>
+    <ul>Cross-Region Replication (CRR)</ul>
+    <ul>Same-Region Replication (SRR)</ul>
+    <ul>Must give proper IAM permission to S3</ul>
+    <ul>After enable replication, only new objects are replicated</ul>
+    <ul>To replicate existing objects use S3 Batch Replication</ul>
+    <ul>For DELETE: can replicate delete markers(optional setting). (Deletion with version Id are not replicated -
+      Avoid
+      Malicious deletes)</ul>
+    <li><b><u>S3 Storage Classes</u></b></li>
+    <li>"Amazon S3 Standard - General Purpose" = 99.99% availability, Low latency and high throughput</li>
+    <li>"Amazon S3 Standard - Infrequent Access (IA)" = 99.9% availability</li>
+    <li>"Amazon S3 One Zone - IA" = 99.5% availability</li>
+    <li>"Amazon S3 Glacier Instant Retrieval" = millisecond retrieval, min storage duration: 90 days</li>
+    <li>"Amazon S3 Glacier Flexible Retrieval" = Expedited(1-5 mins), Standard(3-5 hours), Bulk(5-12 hours), min
+      storage
+      duration: 90 days</li>
+    <li>"Amazon S3 Glacier Deep Archive" = Standard(12 hours), Bulk(48 hours), min storage duration: 180 days</li>
+    <li>"Amazon S3 Intelligent Tiering"</li>
+  </div>
+  <br>
+</div>
+
+<div id="Route53" class="card m-3 p-1">
+  <div class="card-header">
+    <h5>Route 53</h5>
+  </div>
+  <div class="card-body">
+    <li>Domain Name System(DNS) - translates human friendly hostnames into machine IP.</li>
+    <li><u>Route 53</u> is a highly available, scalable, fully managed by Authoritative DNS</li>
+    <li><u>Route 53</u> is also a Domain Registrar</li>
+    <li>It supports following DNS: <b>A / AAAA / CNAME / NS</b></li>
+    <li><b>A </b> maps hostname to IPv4</li>
+    <li><b>AAAA </b> maps hostname to IPv6</li>
+    <li><b>CNAME </b> maps hostname to another hostname (target Domain must have an A or AAAA record)</li>
+    <li><b>NS </b> Name Servers for the Hosted Zone - Control how traffic is routed for a domain</li>
+    <li><u>Hosted Zones</u></li>
+    <ul>Container for records that define how to route trraffic to a domain and its subdomains</ul>
+    <ul><b>2 Types: </b><u>Public Hosted Zones</u> and <u>Private Hosted Zones</u></ul>
+    <li><b>You pay $0.50 / month per hosted zone</b></li>
+    <li><b>Routing Policies:</b></li>
+    <ul>It's not same as LB routing, it only responds to DNS queries</ul>
+    <ul>Route 53 supports following routing policies:</ul>
+    <ul><u>Simple: </u> Route to single resource.(If multiple value returned, a random one is chosen by client)</ul>
+    <ul><u>Weighted: </u>Control % of requests that go to each resource</ul>
+    <ul><u>Failover: </u>Request will be routed to primary instance if healthy else secondary instance</ul>
+    <ul><u>Latency based: </u> Redirect to resource that has least latency close to us</ul>
+    <ul><u>Geolocation: </u>Based on use location. (Should create a default match if no match in location)</ul>
+    <ul><u>Multi-Value Answer: </u>Upto 8 healthy records are returned.</ul>
+    <ul><u>Geoproximity:</u> Ability to shift more traffic to resources based on defined bias(1-99)</ul>
+  </div>
+</div>
+
+<div id="VPC-Fundamentals" class="m-3 p-3" tag>
+  <div class="card-header">
+    <h5>VPC Fundamentals</h5>
+  </div>
+  <div>
+    <div class="container mx-2">
+      <div class="row">
+        <div class="col-sm px-2 mt-3">
+          <li><b>Virtual Private Cloud (VPC): </b> Virtual network within the AWS cloud where you can launch and
+            manage
+            your resources</li>
+          <li><b>Subnets: </b>Allow you to partition your network inside VPC - Tied to an AZ</li>
+          <ul><u>Public Subnet</u> is accessible from internet</ul>
+          <ul><u>Private Subnet</u> is not accessible from internet</ul>
+          <li>To define access to internet and between subnets, we use <b>Route Tables</b></li>
+          <li><b>Internet Gateways</b> helps our VPC tconnect with the internet</li>
+          <li>Public Subnets have a Route to internet gateway</li>
+          <li><b>NAT Gateways (AWS-managed) and NAT instances(self-managed)</b> allow your instances in <b>Private
+              Subnets</b> to access the internet while remaining private</li>
+        </div>
+        <div class="col-sm">
+          <img class="pt-3" src="..\assets\images\nat_gateway.png" alt="image"
+            style="max-height: 400px; max-width: 900px;" />
+        </div>
+      </div>
+    </div>
+    <li><b>Typical 3 Tier Solution Architecture:</b></li>
+    <img class="pt-3" src="..\assets\images\3_tier_architecture.png" alt="image" style="max-height: 500px;" />
+  </div>
+</div>
+
+<div id="AWS-CloudFront" class="card m-3 p-1">
+  <div class="card-header">
+    <h5>AWS CloudFront</h5>
+  </div>
+  <div class="card-body">
+    <li>Its a Global Service</li>
+    <li>Its a Content Delivery Network.</li>
+    <li>Improve read performance, content is cached at the edge location.(216 Points of Presence)</li>
+    <li>You can restrict who can access your distribution.</li>
+    <ul><u>AllowList</u></ul>
+    <ul><u>BlockList</u></ul>
+  </div>
+</div>
+
+<div id="Amazon-SQS" class="m-3 p-3" tag>
+  <div class="card-header">
+    <h5>Amazon SQS</h5>
+  </div>
+  <div>
+    <li>Fully managed service, used to decouple applications</li>
+    <li>Unlimited throughput, unlimited number of messages in queue</li>
+    <li>Default retention of messages: 4 days, and maximum of 14 days</li>
+    <li>Limitation of <b>256KB</b> per message sent</li>
+    <li>Can have duplicate message</li>
+    <li>Consumer can poll for messages and can receive up to 10 messages at a time</li>
+    <li><b>There is a cloudwatch metric for SQS size(Queue Length), so we can create alarm an can use that for
+        scaling.</b></li>
+    <li><b>Encryption:</b> In-Flight / KMS keys / Client-side encryption</li>
+    <li><b>Access Controls:</b> IAM policies to regulate access to SQS API</li>
+    <li><b>SQS Access Policies:</b>Useful for cross-account access to SQS and allowing other services(SNS, S3..)</li>
+    <li><b>Message Visibility Timeout:</b></li>
+    <ol>After a message is polled by consumer, it becames invisible for other consumers for configured time(default 30
+      sec) to process and delete the message.</ol>
+    <li><u>SQS - Must Know API</u></li>
+    <ul><b>CreateQueue(MessageRetentionPeriod), DeletteQueue</b></ul>
+    <ul><b>PurgeQueue:</b> delete all the messages in queue</ul>
+    <ul><b>SendMessage(DelaySeconds), ReceiveMessage, DeleteMessage</b></ul>
+    <ul><b>MaxNumberOfMessages:</b> default 1, max 10(forReceiveMessage API)</ul>
+    <ul><b>ReceiveMessageWaitTime:</b> for Long Polling</ul>
+    <ul><b>ChangeMessageVisibility:</b> change the message visibility time</ul>
+  </div>
+</div>
+
+<div id="Amazon-SNS" class="card m-3 p-1">
+  <div class="card-header">
+    <h5>Amazon SNS </h5>
+  </div>
+  <div class="card-body">
+    <li>To send message to many receivers. Its a Pub / sub model</li>
+    <li>Each subscriber to the topic will get all the messages</li>
+    <li><b>Upto ~12,500,000</b> subscriptions per topic</li>
+    <li><b>Encryption:</b> In-Flight / KMS keys / Client-side encryption</li>
+    <li><b>Access Controls:</b> IAM policies to regulate access to SNS API</li>
+    <li><b>SNS Access Policies:</b>Useful for cross-account access to SNS and allowing other services(SQS, S3..)</li>
+  </div>
+</div>
+
+<div id="Amazon-SQS" class="m-3 p-3" tag>
+  <div class="card-header">
+    <h5>SNS + SQS : Fan Out</h5>
+  </div>
+  <div>
+    <img class="pt-3" src="..\assets\images\sqs_sns_fan_out.png" alt="image"
+      style="max-height: 160px; max-width: 900px;" />
+  </div>
+</div>
+
+<div id="AWS-Lambda" class="card m-3 p-1">
+  <div class="card-header">
+    <h5>AWS Lambda</h5>
+  </div>
+  <div class="card-body">
+    <li><b>Serverless</b> meaning developer don't need to manage servers. They just deploy code</li>
+    <ul>Serverless does not mean there are no servers.</ul>
+    <li><u>Serverless in AWS:</u></li>
+    <ul><b>AWS Lambda, DynamoDB, AWS Cognito, AWS API Gateway</b></ul>
+    <ul><b>Amazon SNS and Amazon SQS, AWS Kinesis Data Firehose</b></ul>
+    <ul><b>Aurora Serverless, Step Functions and Fargate</b></ul>
+    <li><b>Why Lambda?</b></li>
+    <ul>Virtual Functions - no servers to manage</ul>
+    <ul>Run on-demand</ul>
+    <ul>Scaling is automated</ul>
+    <ul>Easy monitoring through CloudWatch</ul>
+    <li><b>AWS Lambda can run maximum for 15 mins(default 3 sec)</b></li>
+    <li><b>Lambda Synchronous Invocation - Services: </b></li>
+    <ul><u>User Invoked:</u> ELB, API Gateway, CloudFront, S3 Batch</ul>
+    <ul><u>Service Invoked:</u> Cognito, Step Functions</ul>
+    <ul><u>Other Services:</u> Lex, Alexa, Kinesis Data Firehose</ul>
+    <li><b>Lambda Integration with ALB:</b></li>
+    <li>To us ALB, Lambda function must be registered in TG</li>
+    <li> Request from ALB to Lambda, HTTP transform into JSON contains: ELB info, Http Method and Path, Query String Parameter, Headers, Body</li>
+    <li>Response from Lambda to ALB is in JSON contains: Status code, Header and Response payload</li>
+    <li>ALB can support multi header values:</li>
+    <ul><u>something.com/path?name=foo&name=bar :</u> request json from ALB contains
+      <b>"queryStringParameters": {{ '{' }} "name": ["foo", "bar"] {{ '}' }}</b></ul>
+  </div>
+</div>
+
+<a *ngIf="shouldShowScrollToTopButton()" id="myBtn" class="nav-link" (click)="scrollToTop()">Top</a>

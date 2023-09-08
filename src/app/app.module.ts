@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -6,10 +7,12 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgbCollapseModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {MatRippleModule} from '@angular/material/core';
+import { BlogsComponent } from './blogs/blogs.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { AWSNotesForInterviewComponent } from './blogs/aws-notes-for-interview/aws-notes-for-interview.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BlogsComponent, PortfolioComponent, AWSNotesForInterviewComponent],
   imports: [
     BrowserModule,
     ClipboardModule,
@@ -17,7 +20,7 @@ import {MatRippleModule} from '@angular/material/core';
     NgbCollapseModule,
     NgbModule,
     MatTooltipModule,
-    MatRippleModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],
