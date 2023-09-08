@@ -24,4 +24,12 @@ export class AWSNotesForInterviewComponent implements OnInit {
   shouldShowScrollToTopButton() {
     return this.yOffset > 150;
   }
+
+  scrollToTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }
 }

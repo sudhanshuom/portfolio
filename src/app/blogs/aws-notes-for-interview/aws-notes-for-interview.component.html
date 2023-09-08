@@ -1,5 +1,5 @@
 <h5 class="text-center pt-3">AWS Notes for Interview</h5>
-<div id="AWS_Notes" class="m-3 p-3" tag>
+<div id="AWS-Notes" class="m-3 p-3" tag>
   <div class="card-header">
     <h5>Description</h5>
   </div>
@@ -36,14 +36,16 @@
   </div>
   <div>
     <li><a href="/articles/AWS-Notes-for-Interview#IAM">Identity and Access Management (IAM)</a></li>
-    <li><a href="/articles/AWS-Notes-for-Interview#EC2_and_Secuurity_Group">EC2 and Security Groups(SG)</a></li>
-    <li><a href="/articles/AWS-Notes-for-Interview#ELB_and_ASG">Elastic Load Balancer(ELB) and Auto Scaling
+    <li><a href="/articles/AWS-Notes-for-Interview#EC2-and-Secuurity-Group">EC2 and Security Groups(SG)</a></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#ELB-and-ASG">Elastic Load Balancer(ELB) and Auto Scaling
         Group(ASG)</a></li>
-    <li><a href="/articles/AWS-Notes-for-Interview#Amazon_S3">Amazon S3 - "Infinitely Scaling" Storage</a></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#Amazon-S3">Amazon S3 - "Infinitely Scaling" Storage</a></li>
     <li><a href="/articles/AWS-Notes-for-Interview#Route53">Route 53</a></li>
-    <li><a href="/articles/AWS-Notes-for-Interview#VPC_Fundamentals">VPC Fundamentals</a></li>
-    <li><a href="/articles/AWS-Notes-for-Interview#AWS_CloudFront">AWS CloudFront</a></li>
-    <li></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#VPC-Fundamentals">VPC Fundamentals</a></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#AWS-CloudFront">AWS CloudFront</a></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#Amazon-SQS">Amazon SQS</a></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#Amazon-SNS">Amazon SNS</a></li>
+    <li><a href="/articles/AWS-Notes-for-Interview#AWS-Lambda">AWS Lambda</a></li>
   </div>
 </div>
 
@@ -63,7 +65,7 @@
   </div>
 </div>
 
-<div id="EC2_and_Secuurity_Group" class="m-3 p-3" tag>
+<div id="EC2-and-Secuurity-Group" class="m-3 p-3" tag>
   <div class="card-header">
     <h5>EC2</h5>
   </div>
@@ -82,7 +84,7 @@
   </div>
   <div>
     <li>SG are the fundamental of network security in AWS.</li>
-    <li>SG only contain <b>allow</b> rules that can be reference by IP or by SG/li>
+    <li>SG only contain <b>allow</b> rules that can be reference by IP or by SG</li>
     <li>SG are acting as "Firrewall" on EC2</li>
     <li>
       SG regulate: Access to port, Authorised IP ranges(IPv4 and IPv6). Inbound(to EC2) and Outbound(From EC2)
@@ -91,7 +93,7 @@
     <li>Classic ports </li>
     <ul>22 = SSH(Secure Shell) - Log into a Linux instance.</ul>
     <ul>21 = FTP - uploads file into file share.</ul>
-    <ul>22 = SFTP - upload files using screen_share.</ul>
+    <ul>22 = SFTP - upload files using screen share.</ul>
     <ul>80 = HTTP - access unsecured websites</ul>
     <ul>443 = HTTPs - access secured websites</ul>
     <ul>3389 = RDP(Remote Desktop Protocol) - log into a Windows instance.</ul>
@@ -99,7 +101,7 @@
   </div>
 </div>
 
-<div id="ELB_and_ASG" class="card m-3 p-1">
+<div id="ELB-and-ASG" class="card m-3 p-1">
   <div class="card-header">
     <h5>Elastic Load Balancer(ELB) and Auto Scaling Group(ASG)</h5>
   </div>
@@ -197,7 +199,7 @@
   </div>
 </div>
 
-<div id="Amazon_S3" class="m-3 p-3" tag>
+<div id="Amazon-S3" class="m-3 p-3" tag>
   <div class="card-header">
     <h5>Amazon S3 - "Infinitely Scaling" Storage</h5>
   </div>
@@ -281,7 +283,7 @@
   </div>
 </div>
 
-<div id="VPC_Fundamentals" class="m-3 p-3" tag>
+<div id="VPC-Fundamentals" class="m-3 p-3" tag>
   <div class="card-header">
     <h5>VPC Fundamentals</h5>
   </div>
@@ -312,7 +314,7 @@
   </div>
 </div>
 
-<div id="AWS_CloudFront" class="card m-3 p-1">
+<div id="AWS-CloudFront" class="card m-3 p-1">
   <div class="card-header">
     <h5>AWS CloudFront</h5>
   </div>
@@ -326,7 +328,7 @@
   </div>
 </div>
 
-<div id="Amazon_SQS" class="m-3 p-3" tag>
+<div id="Amazon-SQS" class="m-3 p-3" tag>
   <div class="card-header">
     <h5>Amazon SQS</h5>
   </div>
@@ -355,7 +357,7 @@
   </div>
 </div>
 
-<div id="Amazon_SNS" class="card m-3 p-1">
+<div id="Amazon-SNS" class="card m-3 p-1">
   <div class="card-header">
     <h5>Amazon SNS </h5>
   </div>
@@ -369,7 +371,7 @@
   </div>
 </div>
 
-<div id="Amazon_SQS" class="m-3 p-3" tag>
+<div id="Amazon-SQS" class="m-3 p-3" tag>
   <div class="card-header">
     <h5>SNS + SQS : Fan Out</h5>
   </div>
@@ -379,7 +381,35 @@
   </div>
 </div>
 
+<div id="AWS-Lambda" class="card m-3 p-1">
+  <div class="card-header">
+    <h5>AWS Lambda</h5>
+  </div>
+  <div class="card-body">
+    <li><b>Serverless</b> meaning developer don't need to manage servers. They just deploy code</li>
+    <ul>Serverless does not mean there are no servers.</ul>
+    <li><u>Serverless in AWS:</u></li>
+    <ul><b>AWS Lambda, DynamoDB, AWS Cognito, AWS API Gateway</b></ul>
+    <ul><b>Amazon SNS and Amazon SQS, AWS Kinesis Data Firehose</b></ul>
+    <ul><b>Aurora Serverless, Step Functions and Fargate</b></ul>
+    <li><b>Why Lambda?</b></li>
+    <ul>Virtual Functions - no servers to manage</ul>
+    <ul>Run on-demand</ul>
+    <ul>Scaling is automated</ul>
+    <ul>Easy monitoring through CloudWatch</ul>
+    <li><b>AWS Lambda can run maximum for 15 mins(default 3 sec)</b></li>
+    <li><b>Lambda Synchronous Invocation - Services: </b></li>
+    <ul><u>User Invoked:</u> ELB, API Gateway, CloudFront, S3 Batch</ul>
+    <ul><u>Service Invoked:</u> Cognito, Step Functions</ul>
+    <ul><u>Other Services:</u> Lex, Alexa, Kinesis Data Firehose</ul>
+    <li><b>Lambda Integration with ALB:</b></li>
+    <li>To us ALB, Lambda function must be registered in TG</li>
+    <li> Request from ALB to Lambda, HTTP transform into JSON contains: ELB info, Http Method and Path, Query String Parameter, Headers, Body</li>
+    <li>Response from Lambda to ALB is in JSON contains: Status code, Header and Response payload</li>
+    <li>ALB can support multi header values:</li>
+    <ul><u>something.com/path?name=foo&name=bar :</u> request json from ALB contains
+      <b>"queryStringParameters": {{ '{' }} "name": ["foo", "bar"] {{ '}' }}</b></ul>
+  </div>
+</div>
 
-
-<a *ngIf="shouldShowScrollToTopButton()" id="myBtn" class="nav-link"
-  href="/articles/AWS-Notes-for-Interview#AWS_Notes">Top</a>
+<a *ngIf="shouldShowScrollToTopButton()" id="myBtn" class="nav-link" (click)="scrollToTop()">Top</a>
