@@ -9,11 +9,6 @@ import { AWSNotesForInterviewComponent } from './blogs/aws-notes-for-interview/a
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "/portfolio",
-    pathMatch: 'full'
-  },
-  {
-    path: "portfolio",
     component: PortfolioComponent
   },
   {
