@@ -32,4 +32,9 @@ export class AWSNotesForInterviewComponent implements OnInit {
       behavior: 'smooth',
     });
   }
+
+  scroll(divId: string) {
+    let el = document.getElementById(divId);
+    el != null ? el.scrollIntoView() : '';
+  }
 }

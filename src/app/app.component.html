@@ -12,29 +12,31 @@
         style="flex-direction: row-reverse;">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#about">About Me</a>
+            <a class="nav-link" href="#about" (click)="updateA('home')">About Me</a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#skills">Skills</a>
+            <a class="nav-link" href="#skills" (click)="updateA('home')">Skills</a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#experience">Experience</a>
+            <a class="nav-link" href="#experience" (click)="updateA('home')">Experience</a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#education">Education</a>
+            <a class="nav-link" href="#education" (click)="updateA('home')">Education</a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#contact">Contact</a>
+            <a class="nav-link" href="#contact" (click)="updateA('home')">Contact</a>
           </li>
-          <!-- <li class="nav-item mx-2">
-            <a class="nav-link" href="/articles">Articles</a>
-          </li> -->
+          <li class="nav-item mx-2">
+            <a class="nav-link" (click)="updateA('articles')" style="cursor: pointer;">Articles</a>
+          </li>
         </ul>
       </div>
     </nav>
   </div>
 
   <div class="pt-5 mb-5 pb-5">
-    <router-outlet></router-outlet>
+    <app-portfolio *ngIf="a == 'home'"></app-portfolio>
+    <app-blogs *ngIf="a == 'articles'" (updateA)="updateA($event)"></app-blogs>
+    <app-aws-notes-for-interview *ngIf="a == 'app-aws-notes-for-interview'" (updateA)="updateA($event)"></app-aws-notes-for-interview>
   </div>
 </div>
