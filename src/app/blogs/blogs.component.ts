@@ -16,7 +16,7 @@ export class BlogsComponent implements OnInit {
   }
 
   navigateToUrl(type:any){
-    this.updateA.emit('app-aws-notes-for-interview');
+    this.updateA.emit('app-aws-notes');
   }
 
 }

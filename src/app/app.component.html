@@ -12,19 +12,19 @@
         style="flex-direction: row-reverse;">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#about" (click)="updateA('home')">About Me</a>
+            <a class="nav-link" (click)="scroll('about')" style="cursor: pointer;">About Me</a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#skills" (click)="updateA('home')">Skills</a>
+            <a class="nav-link" (click)="scroll('skills')" style="cursor: pointer;">Skills</a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#experience" (click)="updateA('home')">Experience</a>
+            <a class="nav-link" (click)="scroll('experience')" style="cursor: pointer;">Experience</a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#education" (click)="updateA('home')">Education</a>
+            <a class="nav-link" (click)="scroll('education')" style="cursor: pointer;">Education</a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#contact" (click)="updateA('home')">Contact</a>
+            <a class="nav-link" (click)="scroll('contact')" style="cursor: pointer;">Contact</a>
           </li>
           <li class="nav-item mx-2">
             <a class="nav-link" (click)="updateA('articles')" style="cursor: pointer;">Articles</a>
@@ -37,6 +37,6 @@
   <div class="pt-5 mb-5 pb-5">
     <app-portfolio *ngIf="a == 'home'"></app-portfolio>
     <app-blogs *ngIf="a == 'articles'" (updateA)="updateA($event)"></app-blogs>
-    <app-aws-notes-for-interview *ngIf="a == 'app-aws-notes-for-interview'" (updateA)="updateA($event)"></app-aws-notes-for-interview>
+    <app-aws-notes *ngIf="a == 'app-aws-notes'" (updateA)="updateA($event)"></app-aws-notes>
   </div>
 </div>

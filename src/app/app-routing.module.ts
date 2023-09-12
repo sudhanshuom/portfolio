@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { AWSNotesForInterviewComponent } from './blogs/aws-notes-for-interview/aws-notes-for-interview.component';
+import { AWSNotesComponent } from './blogs/aws-notes/aws-notes.component';
 
 const routes: Routes = [
   {
@@ -20,8 +20,8 @@ const routes: Routes = [
     component: BlogsComponent
   },
   {
-    path: "articles/AWS-Notes-for-Interview",
-    component: AWSNotesForInterviewComponent
+    path: "articles/AWS-Notes",
+    component: AWSNotesComponent
   }
 ];
 

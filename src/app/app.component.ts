@@ -25,6 +25,12 @@ export class AppComponent {
     this.yOffset = window.scrollY;
   }
 
+  scroll(divId: string) {
+    this.updateA('home');
+    let el = document.getElementById(divId);
+    el != null ? el.scrollIntoView() : '';
+  }
+
   updateA(aa: any){
     console.log(aa);
     this.a = aa;
@@ -33,7 +39,7 @@ export class AppComponent {
   @HostListener('window:popstate', ['$event'])
   onPopState() {
     switch(this.a){
-      case 'app-aws-notes-for-interview':
+      case 'app-aws-notes':
         this.a = 'articles';
         break;
       case 'articles':

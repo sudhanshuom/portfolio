@@ -9,10 +9,10 @@ import { NgbCollapseModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BlogsComponent } from './blogs/blogs.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { AWSNotesForInterviewComponent } from './blogs/aws-notes-for-interview/aws-notes-for-interview.component';
+import { AWSNotesComponent } from './blogs/aws-notes/aws-notes.component';
 
 @NgModule({
-  declarations: [AppComponent, BlogsComponent, PortfolioComponent, AWSNotesForInterviewComponent],
+  declarations: [AppComponent, BlogsComponent, PortfolioComponent, AWSNotesComponent],
   imports: [
     BrowserModule,
     ClipboardModule,
