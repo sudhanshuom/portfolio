@@ -93,7 +93,7 @@
     <li>Bootstrapping means launching commands when machine starts.(Using EC2 User data script)</li>
     <li>EC2 Types: General purpose, Compute Optimized(C series), Memory(RAM) Optimized(R series), Storage Optimized
     </li>
-    <li><b>m5.2xlarge</b> <b>m</b>: Instance class, <b>5</b> is generation, <b>2xlarge</b> size within the instance
+    <li><b>m5.2xlarge</b>, where <b>m</b>: Instance class, <b>5</b>: is generation, <b>2xlarge</b>: size within the instance
       class </li>
   </div>
   <div class="card-header mt-3">
@@ -102,9 +102,9 @@
   <div>
     <li>SG are the fundamental of network security in AWS.</li>
     <li>SG only contain <b>allow</b> rules that can be reference by IP or by SG</li>
-    <li>SG are acting as "Firrewall" on EC2</li>
+    <li>SG act as "Firewall" on EC2</li>
     <li>
-      SG regulate: Access to port, Authorised IP ranges(IPv4 and IPv6). Inbound(to EC2) and Outbound(From EC2)
+      <u>SG regulate:</u> Access to port, Authorised IP ranges (IPv4 and IPv6). Inbound(to EC2) and Outbound(From EC2)
       Network.
     </li>
     <li>Classic ports </li>
@@ -135,7 +135,7 @@
     <ul>Seperate public traffic from private traffic</ul>
     <li>ELB is integrated with many AWS services</li>
     <ul>EC2, EC2 ASG, ECS, ACM, CloudWatch</ul>
-    <ul>Route 53, AWS (Web Application Firewall)WAF, AWS Global Accelerator</ul>
+    <ul>Route 53, AWS Web Application Firewall (WAF), AWS Global Accelerator</ul>
     <li>"Health checks" is a way for your ELB to verify whether or not an EC2 instance is properly working</li>
     <li>4 Types of Load Balancers:</li>
     <ul><b>Classic Load Balancers(v1 - old generation):</b> Compatible with HTTP, HTTPS, TCP, SSL - Deprecated and
@@ -187,7 +187,7 @@
       style="max-height: 400px; max-width: 900px;" />
 
     <li><b>Secure Socket Layer (SSL) / Transport Layer Security (TLS)</b></li>
-    <ul>It allows b/w your clients and your LB to be encrypted intransist (in-flight encryption)</ul>
+    <ul>It allows traffic b/w your clients and your LB to be encrypted intransist (in-flight encryption)</ul>
     <ul>Public SSL certificates are issued by Certificate Authority(CA) and have expiration date(you set) and must be
       renewed.</ul>
     <ul>LB uses an X.509 certificate (SSL/TLS server certificate)</ul>
@@ -210,7 +210,7 @@
     <ul><u>Target Tracking Scaling:</u> Avg CPU to stay at 40 %</ul>
     <ul><u>Simple / Step Scaling:</u> Based on CloudWatch Alarms</ul>
     <ul><u>Scheduled Action:</u> Based on known usage patterns(increase min capacity to 10 at 5 pm)</ul>
-    <ul><u>Predictive Scaling:</u> Histoorical load is going to be analyzed and based on that it's going to scale
+    <ul><u>Predictive Scaling:</u> Historical load is going to be analyzed and based on that it's going to scale
       up/down (ML
       powered)</ul>
   </div>
@@ -221,14 +221,14 @@
     <h5>Amazon S3 - "Infinitely Scaling" Storage</h5>
   </div>
   <div>
-    <li>For Backup and Storage, Disaster Recovery, Archive, Hybrid Cloud Storage, Applicationi hosting, Media hosting,
+    <li>For Backup and Storage, Disaster Recovery, Archive, Hybrid Cloud Storage, Application hosting, Media hosting,
       Data lakes and Big analytics, Software delivery, Static Website</li>
     <li> It stores objects (files) in "buckets" (directories)</li>
     <li>Buckets must have globally unique name (across all regions all accounts)</li>
     <li>Buckets are defined at region level</li>
     <li>Max object size is 5TB and if uploading more than 5GB, must use "multi-part upload"</li>
     <li><b>S3 - Security</b></li>
-    <li>"User-Based" = IAM Policies - which API calls should be alloowed for specific user from IAM</li>
+    <li>"User-Based" = IAM Policies - which API calls should be allowed for specific user from IAM</li>
     <li>"Resource-Based"</li>
     <ul><b>Bucket Policies: </b></ul>
     <ul><b>Object Access Control List (ACL): </b></ul>
@@ -356,7 +356,7 @@
     <li>Limitation of <b>256KB</b> per message sent</li>
     <li>Can have duplicate message</li>
     <li>Consumer can poll for messages and can receive up to 10 messages at a time</li>
-    <li><b>There is a cloudwatch metric for SQS size(Queue Length), so we can create alarm an can use that for
+    <li><b>There is a cloudwatch metric for SQS size(Queue Length), so we can create alarm and can use that for
         scaling.</b></li>
     <li><b>Encryption:</b> In-Flight / KMS keys / Client-side encryption</li>
     <li><b>Access Controls:</b> IAM policies to regulate access to SQS API</li>
